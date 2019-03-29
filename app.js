@@ -13,17 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  squares[snake[0]].classList.contains('apple')
 
 
-  //createApple(() => {
-  ///const apple = grid[Math.floor(Math.random() * grid.width)]
-  //apple.classList.add('apple')
-  //})
+  function createApple() {
+    const chosenSquare = squares[Math.floor(Math.random() * squares.length)]
+    chosenSquare.classList.add('apple')
+  }
+  //
+  // generate a random number
+  // give that div a class of apple
+  // display apple/cssm
 
-
-
-
-
+  createApple()
 
   function drawSnake() {
     console.log('draw')
