@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  //const resetApple = squares[snake[0]].classList.contains('apple')
 
   function createApple() {
     const chosenSquare = squares[Math.floor(Math.random() * squares.length)]
     chosenSquare.classList.add('apple')
 
   }
+  // chosenSquare.classList.remove('apple')
 
   // get the snake to eat the apple
     // when index 0 comes in contact with randomised apple, i will need to make the apple disappear, then reappear somewhere else;
@@ -46,6 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if(snake[0] + width > width * width && direction === 'down' || snake[0] - width < 0 && direction === 'up' || snake[0] % width === 0 && 'left' || snake[0] % width === width - 1 && 'right') {
       return false
+    }
+    if(squares[snake[0]].classList.contains('apple')){
+      createApple()
     }
     console.log(snake)
     eraseSnake()
