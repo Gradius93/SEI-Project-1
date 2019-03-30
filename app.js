@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 18
   const squares = []
   const snake = [3,2,1,0]
+  const score = document.querySelector('.score')
   let direction = 'right'
 
   for(let i = 0; i < width * width; i++) {
@@ -13,17 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  squares[snake[0]].classList.contains('apple')
 
+  //const resetApple = squares[snake[0]].classList.contains('apple')
 
   function createApple() {
     const chosenSquare = squares[Math.floor(Math.random() * squares.length)]
     chosenSquare.classList.add('apple')
+
   }
-  //
-  // generate a random number
-  // give that div a class of apple
-  // display apple/cssm
+
+  // get the snake to eat the apple
+    // when index 0 comes in contact with randomised apple, i will need to make the apple disappear, then reappear somewhere else;
+    //increment the score div;
+    //increase the size of the snake array
+
 
   createApple()
 
@@ -61,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //createApple()
 
   setInterval(moveSnake, 100)
+
+
 
   function moveDown() {
     eraseSnake()
