@@ -5,7 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const squares = []
   const snake = [3,2,1,0]
   const score = document.querySelector('.score')
+  let scoreCount = 0
   let direction = 'right'
+  const chosenSquare = 0
+  const snakeMoving = setInterval(moveSnake, 100)
+
 
   for(let i = 0; i < width * width; i++) {
     const square = document.createElement('div')
@@ -13,23 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.appendChild(square)
   }
 
-
-
-
   function createApple() {
     const chosenSquare = squares[Math.floor(Math.random() * squares.length)]
     chosenSquare.classList.add('apple')
+  }
+  createApple()
+
+  function endGame() {
+    grid.classList.remove('grid')
+    clearInterval(snakeMoving)
 
   }
-  // chosenSquare.classList.remove('apple')
-
-  // get the snake to eat the apple
-    // when index 0 comes in contact with randomised apple, i will need to make the apple disappear, then reappear somewhere else;
-    //increment the score div;
-    //increase the size of the snake array
-
-
-  createApple()
 
   function drawSnake() {
     console.log('draw')
@@ -41,17 +39,24 @@ document.addEventListener('DOMContentLoaded', () => {
     snake.forEach(index => squares[index].classList.remove('snake'))
   }
 
-
   function moveSnake() {
-
-    if(snake[0] + width > width * width && direction === 'down' || snake[0] - width < 0 && direction === 'up' || snake[0] % width === 0 && 'left' || snake[0] % width === width - 1 && 'right') {
-      return false
-    }
     if(squares[snake[0]].classList.contains('apple')){
+      scoreCount++
+      score.innerText = scoreCount
+      squares[snake[0]].classList.remove('apple')
+      snake.unshift(snake[0])
       createApple()
     }
-    console.log(snake)
-    eraseSnake()
+
+    if(snake[0] + width >= width * width && direction === 'down' ||
+    snake[0] - width < 0 && direction === 'up' ||
+    snake[0] % width === 0 && direction === 'left' ||
+    snake[0] % width === width - 1 && direction === 'right') {
+      return endGame()
+    }
+
+
+
     switch(direction){
       case 'right': moveRight()
         break
@@ -61,13 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         break
       case 'down': moveDown()
     }
-    drawSnake()
   }
-
-  drawSnake()
-  //createApple()
-
-  setInterval(moveSnake, 100)
+  console.log(snake)
 
 
 
@@ -101,18 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+
   document.addEventListener('keydown', (e) => {
     console.log(e.keycode)
     switch(e.keyCode) {
-      case 37: direction = 'left'
+      case 37: if (direction !== 'right') direction = 'left'
         break
-      case 38: direction = 'up'
+      case 38: if (direction !== 'down') direction = 'up'
         break
-      case 39: direction = 'right'
+      case 39: if (direction !== 'left') direction = 'right'
         break
-      case 40: direction = 'down'
+      case 40: if (direction !== 'up') direction = 'down'
     }
   })
+})
 //  // get from JS
 //  // Assign those four squares a class of active  = snake
 //  // Define starting position of the snake
@@ -128,4 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
 //
 //
 //
-})
+// chosenSquare.classList.remove('apple')
+
+// get the snake to eat the apple
+// when index 0 comes in contact with randomised apple, i will need to make the apple disappear, then reappear somewhere else;
+//increment the score div;
+//increase the size of the snake array
