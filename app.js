@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const grid = document.querySelector('.grid')
+  const score = document.querySelector('.score')
+
   const width = 18
   const squares = []
   const snake = [3,2,1,0]
-  const score = document.querySelector('.score')
-  let scoreCount = 0
   let direction = 'right'
+  let scoreCount = 0
   const chosenSquare = 0
   const snakeMoving = setInterval(moveSnake, 100)
 
@@ -23,11 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   createApple()
 
-  function endGame() {
-    grid.classList.remove('grid')
-    clearInterval(snakeMoving)
-
-  }
 
   function drawSnake() {
     console.log('draw')
@@ -38,6 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('erase')
     snake.forEach(index => squares[index].classList.remove('snake'))
   }
+
+  function snakeDeath(){
+    if(snake.slice(1).includes[snake[0]]) {
+      return endGame()
+    }
+  }
+  function endGame() {
+    grid.classList.remove('grid')
+    clearInterval(snakeMoving)
+  }
+  snakeDeath()
 
   function moveSnake() {
     if(squares[snake[0]].classList.contains('apple')){
@@ -55,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return endGame()
     }
 
-
+    eraseSnake()
 
     switch(direction){
       case 'right': moveRight()
@@ -107,11 +114,19 @@ document.addEventListener('DOMContentLoaded', () => {
     switch(e.keyCode) {
       case 37: if (direction !== 'right') direction = 'left'
         break
+      case 65: if (direction !== 'right') direction = 'left'
+        break
       case 38: if (direction !== 'down') direction = 'up'
+        break
+      case 87: if (direction !== 'down') direction = 'up'
         break
       case 39: if (direction !== 'left') direction = 'right'
         break
+      case 68: if (direction !== 'left') direction = 'right'
+        break
       case 40: if (direction !== 'up') direction = 'down'
+        break
+      case 83: if (direction !== 'up') direction = 'down'
     }
   })
 })
