@@ -8,8 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const snake = [3,2,1,0]
   let direction = 'right'
   let scoreCount = 0
+  let snakeSpeed = 400
   const chosenSquare = 0
-  const snakeMoving = setInterval(moveSnake, 100)
+  // const snakeMoving = setInterval(moveSnake, 100)
 
 
   for(let i = 0; i < width * width; i++) {
@@ -42,19 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function endGame() {
     grid.classList.remove('grid')
-    clearInterval(snakeMoving)
+    //clearInterval(snakeMoving)
   }
   snakeDeath()
 
   function moveSnake() {
     if(squares[snake[0]].classList.contains('apple')){
       scoreCount++
+      snakeSpeed -= 10
       score.innerText = scoreCount
       squares[snake[0]].classList.remove('apple')
       snake.unshift(snake[0])
       createApple()
     }
-
+    setTimeout(moveSnake, snakeSpeed)
     if(snake[0] + width >= width * width && direction === 'down' ||
     snake[0] - width < 0 && direction === 'up' ||
     snake[0] % width === 0 && direction === 'left' ||
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
   console.log(snake)
-
+  moveSnake()
 
 
   function moveDown() {
