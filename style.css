@@ -42,9 +42,18 @@ h1 {
   font-size: 200px;
 }
 
+button {
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  height: 80px;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 75px;
+}
+
 .grid {
   align-items: center;
-  background-image: linear-gradient(to right, rgba(25,25,25,1), rgba(255,0,0,1));
+  
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-grow: 1;

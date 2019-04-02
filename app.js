@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const width = 18
   const squares = []
-  const snake = [3,2,1,0]
+  let snake = [3,2,1,0]
   let direction = 'right'
   let scoreCount = 0
   let snakeSpeed = 400
+  const button = document.querySelector('button')
 
   // const snakeMoving = setInterval(moveSnake, snakeSpeed)
 
@@ -22,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function createApple() {
     const chosenSquare = squares[Math.floor(Math.random() * squares.length)]
     chosenSquare.classList.add('apple')
+    // if (snake[snake.length] === true) {
+    //
+    //
+    // }
   }
   createApple()
 
@@ -41,29 +46,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   function endGame() {
     grid.classList.remove('grid')
-    return score
+    snakeSpeed = 400
+    eraseSnake()
 
     //clearInterval(snakeMoving)
   }
-  snakeDeath()
 
-  function moveSnake() {
-    if(squares[snake[0]].classList.contains('apple')){
-      scoreCount++
-      snakeSpeed -= 10
-      score.innerText = scoreCount
-      squares[snake[0]].classList.remove('apple')
-      snake.push(snake[snake.length-1])
+  const keepGoing = true
 
-      createApple()
-    }
+
+    function moveSnake() {
+      if(squares[snake[0]].classList.contains('apple')){
+        scoreCount++
+        snakeSpeed -= 10
+        score.innerText = scoreCount
+        squares[snake[0]].classList.remove('apple')
+        snake.push(snake[snake.length-1])
+
+        createApple()
+      }
+
     setTimeout(moveSnake, snakeSpeed)
+
     if(snake[0] + width >= width * width && direction === 'down' ||
     snake[0] - width < 0 && direction === 'up' ||
     snake[0] % width === 0 && direction === 'left' ||
     snake[0] % width === width - 1 && direction === 'right' ||
     snake.slice(1).includes(snake[0])) {
-
+      snakeDeath()
       return endGame()
     }
 
@@ -81,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   console.log(snake)
   moveSnake()
-
 
   function moveDown() {
     eraseSnake()
@@ -114,6 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
   document.addEventListener('keydown', (e) => {
     console.log(e.keycode)
     switch(e.keyCode) {
@@ -134,6 +145,19 @@ document.addEventListener('DOMContentLoaded', () => {
       case 83: if (direction !== 'up') direction = 'down'
     }
   })
+
+
+//   button.addEventListener('click', () => {
+//     snake.forEach(index => squares[index].classList.remove('snake'))
+//     snake = [3,2,1,0]
+//     score.innerText = 0
+//     scoreCount = score.innerText
+//     grid.classList.add('grid')
+//     direction = 'right'
+//     drawSnake()
+//     moveSnake()
+//
+//   })
 })
 //  // get from JS
 //  // Assign those four squares a class of active  = snake
