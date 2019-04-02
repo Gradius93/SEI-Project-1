@@ -20,6 +20,7 @@ main {
 h1 {
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
   font-family: 'Reenie Beanie', cursive;
   font-size: 80px;
   justify-content: center;
@@ -27,6 +28,7 @@ h1 {
 
 .container {
   display: block;
+  margin: 0;
 }
 .info {
 
@@ -41,6 +43,9 @@ h1 {
   font-family: 'Reenie Beanie', cursive;
   font-size: 200px;
 }
+.scorename {
+  font-size: 20px;
+}
 
 button {
   display: flex;
@@ -49,11 +54,13 @@ button {
   height: 80px;
   font-family: 'Reenie Beanie', cursive;
   font-size: 75px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .grid {
   align-items: center;
-  
+
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-grow: 1;

@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let scoreCount = 0
   let snakeSpeed = 400
   const button = document.querySelector('button')
+  let timer
 
   // const snakeMoving = setInterval(moveSnake, snakeSpeed)
 
@@ -52,21 +53,18 @@ document.addEventListener('DOMContentLoaded', () => {
     //clearInterval(snakeMoving)
   }
 
-  const keepGoing = true
+  function moveSnake() {
+    if(squares[snake[0]].classList.contains('apple')){
+      scoreCount++
+      snakeSpeed -= 10
+      score.innerText = scoreCount
+      squares[snake[0]].classList.remove('apple')
+      snake.push(snake[snake.length-1])
 
+      createApple()
+    }
 
-    function moveSnake() {
-      if(squares[snake[0]].classList.contains('apple')){
-        scoreCount++
-        snakeSpeed -= 10
-        score.innerText = scoreCount
-        squares[snake[0]].classList.remove('apple')
-        snake.push(snake[snake.length-1])
-
-        createApple()
-      }
-
-    setTimeout(moveSnake, snakeSpeed)
+    timer = setTimeout(moveSnake, snakeSpeed)
 
     if(snake[0] + width >= width * width && direction === 'down' ||
     snake[0] - width < 0 && direction === 'up' ||
@@ -147,17 +145,18 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
 
-//   button.addEventListener('click', () => {
-//     snake.forEach(index => squares[index].classList.remove('snake'))
-//     snake = [3,2,1,0]
-//     score.innerText = 0
-//     scoreCount = score.innerText
-//     grid.classList.add('grid')
-//     direction = 'right'
-//     drawSnake()
-//     moveSnake()
-//
-//   })
+  button.addEventListener('click', () => {
+    snake.forEach(index => squares[index].classList.remove('snake'))
+    snake = [3,2,1,0]
+    clearTimeout(timer)
+    score.innerText = 0
+    scoreCount = score.innerText
+    grid.classList.add('grid')
+    direction = 'right'
+    drawSnake()
+    moveSnake()
+
+  })
 })
 //  // get from JS
 //  // Assign those four squares a class of active  = snake
