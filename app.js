@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ======================= variables =====================
   const grid = document.querySelector('.grid')
   const score = document.querySelector('.score')
-
+  const button = document.querySelector('.button')
   const width = 18
   const squares = []
+
   let snake = [3,2,1,0]
   let direction = 'right'
   let scoreCount = 0
   let snakeSpeed = 400
-  const button = document.querySelector('button')
   let timer
 
-  // const snakeMoving = setInterval(moveSnake, snakeSpeed)
+  // ======================= function ======================
 
+  // create the grid
 
   for(let i = 0; i < width * width; i++) {
     const square = document.createElement('div')
@@ -21,14 +23,16 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.appendChild(square)
   }
 
+  // create randomised apple
   function createApple() {
-    const chosenSquare = squares[Math.floor(Math.random() * squares.length)]
-    chosenSquare.classList.add('apple')
-    // if (snake[snake.length] === true) {
-    //
-    //
-    // }
+    let chosenSquare = Math.floor(Math.random() * squares.length)
+
+    while (squares[chosenSquare].classList.contains('snake')) {
+      chosenSquare = Math.floor(Math.random() * squares.length)
+    }
+    squares[chosenSquare].classList.add('apple')
   }
+
   createApple()
 
 
@@ -45,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function snakeDeath(){
     return snake.slice(1).includes[snake[0]]
   }
+
   function endGame() {
     grid.classList.remove('grid')
     snakeSpeed = 400
@@ -119,12 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
     drawSnake()
   }
 
-
+  // ============================ event listeners ===============
 
 
 
   document.addEventListener('keydown', (e) => {
     console.log(e.keycode)
+    e.preventDefault()
     switch(e.keyCode) {
       case 37: if (direction !== 'right') direction = 'left'
         break
@@ -155,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
     direction = 'right'
     drawSnake()
     moveSnake()
-
   })
 })
 //  // get from JS
