@@ -18,17 +18,28 @@ main {
   margin: 0 auto;
 }
 
-h1 {
+.end-game-message {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
   font-family: 'Reenie Beanie', cursive;
   font-size: 80px;
-  justify-content: center;
+
+}
+
+h1 {
+  display: block;
+  flex-wrap: wrap;
+  margin: 0;
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 80px;
+  align-items: center;
 }
 
 .container {
-  display: block;
+  display: flex;
+  flex-direction: column;
+
   margin: 0;
 }
 .info {
@@ -89,4 +100,8 @@ button {
 
 .apple {
   background-color: red;
+}
+
+.hidden {
+  display: none!important;
 }

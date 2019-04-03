@@ -1,22 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ======================= variables =====================
+
+  // ---const---
+
   const grid = document.querySelector('.grid')
   const score = document.querySelector('.score')
   const button = document.querySelector('.button')
+  const endGameMessage = document.querySelector('.end-game-message')
   const width = 18
   const squares = []
-
+  const title = document.querySelector('.title')
+  // ---let---
+  let snakeSpeed = 400
   let snake = [3,2,1,0]
   let direction = 'right'
   let scoreCount = 0
-  let snakeSpeed = 400
   let timer
 
   // ======================= function ======================
 
   // create the grid
-
   for(let i = 0; i < width * width; i++) {
     const square = document.createElement('div')
     squares.push(square)
@@ -52,6 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function endGame() {
     grid.classList.remove('grid')
+    endGameMessage.classList.remove('hidden')
+    title.classList.add('hidden')
     snakeSpeed = 400
     eraseSnake()
 
@@ -126,8 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ============================ event listeners ===============
 
-
-
   document.addEventListener('keydown', (e) => {
     console.log(e.keycode)
     e.preventDefault()
@@ -158,29 +162,10 @@ document.addEventListener('DOMContentLoaded', () => {
     score.innerText = 0
     scoreCount = score.innerText
     grid.classList.add('grid')
+    endGameMessage.classList.add('hidden')
+    title.classList.remove('hidden')
     direction = 'right'
     drawSnake()
     moveSnake()
   })
 })
-//  // get from JS
-//  // Assign those four squares a class of active  = snake
-//  // Define starting position of the snake
-//  // Define movement of snake
-//  //    add event listener to each movement key
-//  // Create a push/pop function to roll snake along
-//  //    incoporating a loop
-//  // Generate a random number
-//  // Store in a variable (i.e let apple)
-//  // Give random square a class of apple (like active)
-//  // Display apple
-//  // To be continued ...
-//
-//
-//
-// chosenSquare.classList.remove('apple')
-
-// get the snake to eat the apple
-// when index 0 comes in contact with randomised apple, i will need to make the apple disappear, then reappear somewhere else;
-//increment the score div;
-//increase the size of the snake array
