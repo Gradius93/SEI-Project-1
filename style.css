@@ -6,7 +6,6 @@ body {
   align-items: center;
   display: flex;
   height: 100%;
-  width: 100%;
   justify-content: center;
   margin: 0 auto;
 }
@@ -14,7 +13,6 @@ body {
 main {
   max-width: 800px;
   display: flex;
-
   margin: 0 auto;
 }
 
@@ -62,6 +60,9 @@ h1 {
 button {
   display: flex;
   justify-content: center;
+  position: absolute;
+  left: 35%;
+  top: 50%;
   width: 250px;
   height: 80px;
   font-family: 'Reenie Beanie', cursive;
@@ -72,12 +73,11 @@ button {
 
 .grid {
   align-items: center;
-
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
-  height: 100%;
+  height: 100vh;
   justify-content: flex-start;
   max-height: 600px;
   max-width: 600px;
@@ -87,21 +87,61 @@ button {
   flex-grow: 1;
   height: 33.33px;
   width: 33.33px;
-
 }
 
 .snake {
-  width: 100px;
+  /* width: 100px;
   border-radius: 25px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.8); */
   background-color:  rgba(40,255,255,1);
-
 }
 
 .apple {
-  background-color: red;
+  background-image: url('images/apple2.png');
+  background-size: contain;
+  background-position: center;
+  align-items: center;
+  background-repeat: no-repeat;
+}
+
+.end-game-message {
+  position: absolute;
+  left: 25%;
+  top: 30%;
+  width: 100%;
+  text-align: center;
+
 }
 
 .hidden {
   display: none!important;
+}
+
+@media only screen and (max-width: 750px){
+  .grid {
+    max-height: 300px;
+    max-width: 300px;
+  }
+  .score {
+    width: 50px;
+    font-size: 100px;
+  }
+  .end-game-message {
+    left: 17%;
+    top: 15%;
+    width: 50%;
+  }
+    button {
+
+
+
+      left: 17%;
+      top: 55%;
+      width: 125px;
+      height: 40px;
+      font-family: 'Reenie Beanie', cursive;
+      font-size: 37px;
+    }
+
+
 }

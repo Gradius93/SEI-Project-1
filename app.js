@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     squares[chosenSquare].classList.add('apple')
   }
 
-  createApple()
+
 
 
   function drawSnake() {
@@ -57,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function endGame() {
     grid.classList.remove('grid')
     endGameMessage.classList.remove('hidden')
+    button.classList.remove('hidden')
     title.classList.add('hidden')
     snakeSpeed = 400
     eraseSnake()
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', (e) => {
     console.log(e.keycode)
-    e.preventDefault()
+    // e.preventDefault()
     switch(e.keyCode) {
       case 37: if (direction !== 'right') direction = 'left'
         break
@@ -163,9 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
     scoreCount = score.innerText
     grid.classList.add('grid')
     endGameMessage.classList.add('hidden')
+    button.classList.add('hidden')
     title.classList.remove('hidden')
     direction = 'right'
     drawSnake()
+
     moveSnake()
   })
+  createApple()
 })
