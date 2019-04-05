@@ -20,7 +20,7 @@
 
 **smolSnekBoi** - a modern meme crossed with an arcade classic
 
-![smolSnekBoi](https://gradius93.github.io/SEI-Project-1/smolSnekBoiTitle.jpg)
+![smolSnekBoi](https://gradius93.github.io/SEI-Project-1/images/smolSnekBoiTitle.jpg)
 
 [Link to live site](https://gradius93.github.io/SEI-Project-1/)
 
@@ -29,11 +29,11 @@ smolSnekBoi! A modern take on the classic game! Here is my first project designe
 
 ### Game Play
 
-![gameplay](https://gradius93.github.io/SEI-Project-1/ssBgameplay.jpg)
+![gameplay](https://gradius93.github.io/SEI-Project-1/images/ssBgameplay.jpg)
 
 ### Game Over
 
-![gameover](https://gradius93.github.io/SEI-Project-1/ssbgameover.jpg)
+![gameover](https://gradius93.github.io/SEI-Project-1/images/ssbgameover.jpg)
 
 ### Controls
 
