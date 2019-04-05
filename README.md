@@ -45,11 +45,11 @@ User controls available for both right handed and left handed people. Right hand
 
 ![snekeatapple](https://gradius93.github.io/SEI-Project-1/images/snekeatapple.jpg)
 
-1. Slowly you will gain size after each apple eaten.
+2. Slowly you will gain size after each apple eaten.
 
 ![gainsize](https://gradius93.github.io/SEI-Project-1/images/gainsize.jpg)
 
-1. To add to the gameplay satisfaction experience, as well as gaining in size as the game progresses, you will also gain speed, allowing only for the most skilled of players to reach high scores.
+3. To add to the gameplay satisfaction experience, as well as gaining in size as the game progresses, you will also gain speed, allowing only for the most skilled of players to reach high scores.
 
 ## Process
 
