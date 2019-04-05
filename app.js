@@ -11,13 +11,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const width = 18
   const squares = []
   const title = document.querySelector('.title')
+  const highScore = document.querySelector('.highscore')
   // ---let---
   let snakeSpeed = 400
   let snake = [3,2,1,0]
   let direction = 'right'
   let scoreCount = 0
   let timer
-
+  let highScoreCount = window.localStorage.getItem('highscore')
+  highScore.innerText = window.localStorage.getItem('highscore')
   // ======================= function ======================
 
   // create the grid
@@ -27,44 +29,34 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.appendChild(square)
   }
 
-  // create randomised apple
+  function snakeDeath(){
+    return snake.slice(1).includes[snake[0]]
+  }
+
+  // create the apple
   function createApple() {
     let chosenSquare = Math.floor(Math.random() * squares.length)
-
     while (squares[chosenSquare].classList.contains('snake')) {
       chosenSquare = Math.floor(Math.random() * squares.length)
     }
     squares[chosenSquare].classList.add('apple')
   }
-
-
-
-
-  function drawSnake() {
-    console.log('draw')
-    snake.forEach(index => squares[index].classList.add('snake'))
-  }
-
-  function eraseSnake() {
-    console.log('erase')
-    snake.forEach(index => squares[index].classList.remove('snake'))
-  }
-
-  function snakeDeath(){
-    return snake.slice(1).includes[snake[0]]
-  }
-
+  // end dat ish
   function endGame() {
     grid.classList.remove('grid')
     endGameMessage.classList.remove('hidden')
     button.classList.remove('hidden')
     title.classList.add('hidden')
     snakeSpeed = 400
-    eraseSnake()
-
-    //clearInterval(snakeMoving)
+    if (scoreCount > highScoreCount) {
+      highScoreCount = scoreCount
+      window.localStorage.setItem('highscore', `${highScoreCount}`)
+      highScore.innerText = window.localStorage.getItem('highScore')
+    }
   }
 
+
+  // move the snake
   function moveSnake() {
     if(squares[snake[0]].classList.contains('apple')){
       scoreCount++
@@ -72,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
       score.innerText = scoreCount
       squares[snake[0]].classList.remove('apple')
       snake.push(snake[snake.length-1])
-
       createApple()
     }
 
@@ -89,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     eraseSnake()
 
+
     switch(direction){
       case 'right': moveRight()
         break
@@ -101,6 +93,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   console.log(snake)
   moveSnake()
+
+  // snake functions
+  function drawSnake() {
+    console.log('draw')
+    snake.forEach(index => squares[index].classList.add('snake'))
+  }
+
+  function eraseSnake() {
+    console.log('erase')
+    snake.forEach(index => squares[index].classList.remove('snake'))
+  }
 
   function moveDown() {
     eraseSnake()
@@ -135,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('keydown', (e) => {
     console.log(e.keycode)
-    // e.preventDefault()
+    e.preventDefault()
     switch(e.keyCode) {
       case 37: if (direction !== 'right') direction = 'left'
         break
@@ -171,5 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     moveSnake()
   })
+
+
   createApple()
 })
