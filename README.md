@@ -39,6 +39,30 @@ smolSnekBoi! A modern take on the classic game! Here is my first project designe
 
 User controls available for both right handed and left handed people. Right handed controls are the arrow keys up, left, down, right; and for the lefties the keys A,S,D,W are used for the directional controls.
 
+```
+document.addEventListener('keydown', (e) => {
+  console.log(e.keycode)
+  e.preventDefault()
+  switch(e.keyCode) {
+    case 37: if (direction !== 'right') direction = 'left'
+      break
+    case 65: if (direction !== 'right') direction = 'left'
+      break
+    case 38: if (direction !== 'down') direction = 'up'
+      break
+    case 87: if (direction !== 'down') direction = 'up'
+      break
+    case 39: if (direction !== 'left') direction = 'right'
+      break
+    case 68: if (direction !== 'left') direction = 'right'
+      break
+    case 40: if (direction !== 'up') direction = 'down'
+      break
+    case 83: if (direction !== 'up') direction = 'down'
+  }
+})
+```
+
 ### Game Instructions
 
 1. Start the game off as smolSnekBoi and use the directional controls to feed smolSneky with the apples that randomly appear on the screen.
