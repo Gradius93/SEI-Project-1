@@ -31,6 +31,28 @@ smolSnekBoi! A modern take on the classic game! Here is my first project designe
 
 ![gameplay](https://gradius93.github.io/SEI-Project-1/images/ssBgameplay.jpg)
 
+Here is the code that allowed me to create the grid with JavaScript
+
+```
+for(let i = 0; i < width * width; i++) {
+  const square = document.createElement('div')
+  squares.push(square)
+  grid.appendChild(square)
+}
+```
+
+This is the code that allowed me to create a randomised apple
+
+```
+function createApple() {
+  let chosenSquare = Math.floor(Math.random() * squares.length)
+  while (squares[chosenSquare].classList.contains('snake')) {
+    chosenSquare = Math.floor(Math.random() * squares.length)
+  }
+  squares[chosenSquare].classList.add('apple')
+}
+```
+
 ### Game Over
 
 ![gameover](https://gradius93.github.io/SEI-Project-1/images/ssbgameover.jpg)
